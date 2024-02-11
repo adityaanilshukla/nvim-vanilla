@@ -36,7 +36,5 @@ runtime after/plugin/undotree.lua
 -- start lualine
 require('lualine').setup {}
 
-
-
 -- start git signs
 require('gitsigns').setup()

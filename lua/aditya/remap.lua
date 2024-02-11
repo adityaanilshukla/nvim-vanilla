@@ -15,6 +15,36 @@ vim.keymap.set("n", "<leader>o", function()
     end
 end, { desc = "Toggle Explorer Focus" })
 
+function ColorMyPencils(color)
+
+	require('rose-pine').setup({
+	disable_background = true
+	})
+
+    color = color or "rose-pine"
+    vim.cmd.colorscheme(color)
+
+    -- Set the background of various highlight groups to transparent
+    local hl_groups = { "Normal", "NormalFloat", "NormalNC" }
+    for _, hl_group in ipairs(hl_groups) do
+        vim.api.nvim_set_hl(0, hl_group, { bg = "none" })
+    end
+end
+
+-- Function to create vertical split and then apply color settings
+local function vertical_split_and_color()
+    vim.cmd("vsplit")
+    vim.cmd("wincmd w")
+    ColorMyPencils()
+end
+
+-- Function to create horizontal split and then apply color settings
+local function horizontal_split_and_color()
+    vim.cmd("split")
+    vim.cmd("wincmd w")
+    ColorMyPencils()
+end
+
 -- Normal --
 -- Standard Operations
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", {expr = true, desc = "Move cursor down"})
@@ -25,8 +55,9 @@ vim.keymap.set('n', '<leader>Q', "<cmd>confirm qall<cr>", {desc = "Quit all"})
 vim.keymap.set('n', '<leader>n', "<cmd>enew<cr>", {desc = "New File"})
 vim.keymap.set('n', '<C-s>', "<cmd>w!<cr>", {desc = "Force write"})
 vim.keymap.set('n', '<C-q>', "<cmd>qa!<cr>", {desc = "Force quit"})
-vim.keymap.set('n', '|', "<cmd>vsplit<CR><cmd>wincmd w<CR>", {desc = "Vertical Split"})
-vim.keymap.set('n', '\\', "<cmd>split<CR><cmd>wincmd w<CR>", {desc = "Horizontal Split"})
+-- Set keymaps for vertical and horizontal splits
+vim.keymap.set('n', '|', vertical_split_and_color, {desc = "Vertical Split"})
+vim.keymap.set('n', '\\', horizontal_split_and_color, {desc = "Horizontal Split"})
 
 
 -- Improved Terminal Navigation
