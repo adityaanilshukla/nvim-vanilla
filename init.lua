@@ -4,7 +4,10 @@ local user = os.getenv("USER")
 local vanilla_config_path = "/home/" .. user .. "/.config/nvim-vanilla"
 vim.o.runtimepath = vim.o.runtimepath .. ',' .. vanilla_config_path
 
+-- global status line
+vim.o.laststatus = 3
 
+-- remove ~ at the end of each buffer
 vim.opt.fillchars = { eob = " " }
 
 -- Require the main configuration file from the 'aditya' module
@@ -31,11 +34,9 @@ runtime after/plugin/undotree.lua
 ]]
 
 -- start lualine
-require('lualine').setup {
-}
+require('lualine').setup {}
 
--- global status line
-vim.o.laststatus = 3
+
 
 -- start git signs
 require('gitsigns').setup()
