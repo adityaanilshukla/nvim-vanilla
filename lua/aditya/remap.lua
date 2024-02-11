@@ -55,10 +55,13 @@ vim.api.nvim_set_keymap('n', '<leader>/', '<cmd>lua require("Comment.api").toggl
 vim.api.nvim_set_keymap('v', '<leader>/', '<esc><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', { noremap = true, silent = true, desc = "Toggle comment for selection" })
 
 
--- toggle a terminal in floating window mode
-vim.api.nvim_set_keymap('n', '<F7>', '<cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true, desc = "Toggle floating terminal" })
-vim.api.nvim_set_keymap('t', '<F7>', '<C-\\><C-n><cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true, desc = "Toggle floating terminal" })
+-- Toggle a terminal in floating window mode using F7
+vim.api.nvim_set_keymap('n', '<F7>', '<cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true, desc = "Toggle floating terminal with F7" })
+vim.api.nvim_set_keymap('t', '<F7>', '<C-\\><C-n><cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true, desc = "Toggle floating terminal with F7" })
 
+-- Toggle a terminal in floating window mode using 7
+vim.api.nvim_set_keymap('n', '7', '<cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true, desc = "Toggle floating terminal with 7" })
+vim.api.nvim_set_keymap('t', '7', '<C-\\><C-n><cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true, desc = "Toggle floating terminal with 7" })
 -- Importing the ToggleTerm module
 local Terminal = require('toggleterm.terminal').Terminal
 
