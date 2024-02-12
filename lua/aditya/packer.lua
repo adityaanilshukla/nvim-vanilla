@@ -39,8 +39,6 @@ return require('packer').startup(function(use)
   
   -- smart splitting between windows
   use('mrjones2014/smart-splits.nvim')
-  -- or use a specific version
-  use({ 'mrjones2014/smart-splits.nvim', tag = 'v1.0.0' })
   -- to use Kitty multiplexer support, run the post install hook
   use({ 'mrjones2014/smart-splits.nvim', run = './kitty/install-kittens.bash' })
 
@@ -77,5 +75,9 @@ return require('packer').startup(function(use)
  use{ 
  'lewis6991/gitsigns.nvim',
  }
+
+
+ -- These optional plugins should be loaded directly because of a bug in Packer lazy loading
+ use 'romgrk/barbar.nvim'
 
 end)

@@ -60,6 +60,19 @@ vim.keymap.set('n', '|', vertical_split_and_color, {desc = "Vertical Split"})
 vim.keymap.set('n', '\\', horizontal_split_and_color, {desc = "Horizontal Split"})
 
 
+-- Close buffer
+vim.api.nvim_set_keymap('n', '<leader>c', '<cmd>bdelete<CR>', { noremap = true, silent = true, desc = 'Close buffer' })
+-- Force close buffer
+vim.api.nvim_set_keymap('n', '<leader>C', '<cmd>bdelete!<CR>', { noremap = true, silent = true, desc = 'Force close buffer' })
+-- Next buffer
+vim.api.nvim_set_keymap('n', ']b', '<cmd>bnext<CR>', { noremap = true, silent = true, desc = 'Next buffer' })
+-- Previous buffer
+vim.api.nvim_set_keymap('n', '[b', '<cmd>bprevious<CR>', { noremap = true, silent = true, desc = 'Previous buffer' })
+-- Move buffer tab right (requires a custom function)
+vim.api.nvim_set_keymap('n', '>b', '<cmd>BufferMoveNext<CR>', { noremap = true, silent = true, desc = 'Move buffer tab right' })
+-- Move buffer tab left (requires a custom function)
+vim.api.nvim_set_keymap('n', '<b', '<cmd>BufferMovePrevious<CR>', { noremap = true, silent = true, desc = 'Move buffer tab left' })
+
 -- Improved Terminal Navigation
 vim.api.nvim_set_keymap('t', '<C-h>', '<C-\\><C-N><C-w>h', { noremap = true, silent = true, desc = 'Terminal left window navigation' })
 vim.api.nvim_set_keymap('t', '<C-j>', '<C-\\><C-N><C-w>j', { noremap = true, silent = true, desc = 'Terminal down window navigation' })
