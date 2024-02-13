@@ -10,8 +10,13 @@ vim.o.laststatus = 3
 -- remove ~ at the end of each buffer
 vim.opt.fillchars = { eob = " " }
 
+-- create your own file with your api_keys
+local api_keys = require('api_keys')
+
 -- Require the main configuration file from the 'aditya' module
 require('aditya')
+
+local Transparency = require('after/plugin/colors')
 
 -- set relative line numbers
 vim.wo.number = true
@@ -26,15 +31,28 @@ vim.api.nvim_set_keymap('n', '<C-v>', '"+p', { noremap = true, silent = true })
 
 -- enable treesitter plugins
 vim.cmd [[
-runtime after/plugin/colors.lua
 runtime after/plugin/telescope.lua
 runtime after/plugin/treesitter.lua
 runtime after/plugin/harpoon.lua
 runtime after/plugin/undotree.lua
 ]]
 
+
+Transparency.apply()
+
 -- start lualine
 require('lualine').setup {}
 
 -- start git signs
 require('gitsigns').setup()
+
+vim.o.background = "dark"
+
+require('text-to-colorscheme').setup {
+  ai = {
+    openai_api_key = api_keys.open_ai,
+     gpt_model = "gpt-3.5-turbo-0613",
+  },
+}
+
+vim.cmd([[colorscheme text-to-colorscheme]])

@@ -39,8 +39,6 @@ return require('packer').startup(function(use)
   
   -- smart splitting between windows
   use('mrjones2014/smart-splits.nvim')
-  -- to use Kitty multiplexer support, run the post install hook
-  use({ 'mrjones2014/smart-splits.nvim', run = './kitty/install-kittens.bash' })
 
   -- comment plugin to use leader / to comment out lines
   use {
@@ -76,8 +74,18 @@ return require('packer').startup(function(use)
  'lewis6991/gitsigns.nvim',
  }
 
-
  -- These optional plugins should be loaded directly because of a bug in Packer lazy loading
  use 'romgrk/barbar.nvim'
+
+use {
+    'goolord/alpha-nvim',
+    requires = { 'nvim-tree/nvim-web-devicons' },
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.startify'.config)
+    end
+}
+
+-- AI generated colorschemes plugin
+use { "svermeulen/text-to-colorscheme.nvim" }
 
 end)

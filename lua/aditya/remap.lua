@@ -5,6 +5,8 @@ end
 
 vim.g.mapleader = " "
 
+local Transparency = require('after/plugin/colors')
+
 -- NeoTree remap
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "Toggle Explorer" })
 vim.keymap.set("n", "<leader>o", function()
@@ -15,35 +17,26 @@ vim.keymap.set("n", "<leader>o", function()
     end
 end, { desc = "Toggle Explorer Focus" })
 
-function ColorMyPencils(color)
-
-	require('rose-pine').setup({
-	disable_background = true
-	})
-
-    color = color or "rose-pine"
-    vim.cmd.colorscheme(color)
-
-    -- Set the background of various highlight groups to transparent
-    local hl_groups = { "Normal", "NormalFloat", "NormalNC" }
-    for _, hl_group in ipairs(hl_groups) do
-        vim.api.nvim_set_hl(0, hl_group, { bg = "none" })
-    end
-end
 
 -- Function to create vertical split and then apply color settings
 local function vertical_split_and_color()
     vim.cmd("vsplit")
     vim.cmd("wincmd w")
-    ColorMyPencils()
+    Transparency.apply()
 end
 
 -- Function to create horizontal split and then apply color settings
 local function horizontal_split_and_color()
     vim.cmd("split")
     vim.cmd("wincmd w")
-    ColorMyPencils()
+    Transparency.apply()
 end
+
+local function toggleTransparency()
+    Transparency.changeState()
+end
+
+vim.keymap.set('n', '<leader>tc', toggleTransparency , {desc = "Toggle Transparency"})
 
 -- Normal --
 -- Standard Operations
