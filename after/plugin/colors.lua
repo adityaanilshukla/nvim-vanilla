@@ -1,58 +1,71 @@
 local Transparency = {}
 
-Transparency.state = true
+Transparency.state = false
+Transparency.backgroundColor = 0
 
 function Transparency.ColorMyBackground()
+    -- Define the highlight groups to change
+    local hl_groups = { "Normal", "NormalFloat", "NormalNC" }
 
-    vim.cmd [[colorscheme torte]]
+    -- Apply the background color to the specified highlight groups
+    for _, hl_group in ipairs(hl_groups) do
+        -- Ensure Transparency.backgroundColor is a valid value before using it
+        if type(Transparency.backgroundColor) == 'number' then
+            vim.api.nvim_set_hl(0, hl_group, { bg = Transparency.backgroundColor })
+        end
+    end
 end
 
 function Transparency.UnColorMyBackground()
+    color = color or "rose-pine"
+    vim.cmd("colorscheme " .. color)
 
-	require('rose-pine').setup({
-		disable_background = true
-	})
+    -- Retrieve the background color from the 'Normal' highlight group
+    -- before changing it to transparent
+    local normal_hl = vim.api.nvim_get_hl_by_name("Normal", true)
 
-	color = color or "rose-pine"
-	vim.cmd.colorscheme(color)
+    -- Check if 'normal_hl' has a valid 'background' property
+    if normal_hl and normal_hl.background and normal_hl.background ~= 0 then
+        Transparency.backgroundColor = normal_hl.background
+    end
 
-	-- Set the background of various highlight groups to transparent
-	local hl_groups = { "Normal", "NormalFloat", "NormalNC" }
-	for _, hl_group in ipairs(hl_groups) do
-		vim.api.nvim_set_hl(0, hl_group, { bg = "none" })
-	end
+    require('rose-pine').setup({
+        disable_background = true
+    })
+
+    -- Set the background of various highlight groups to transparent
+    local hl_groups = { "Normal", "NormalFloat", "NormalNC" }
+    for _, hl_group in ipairs(hl_groups) do
+        vim.api.nvim_set_hl(0, hl_group, { bg = "none" })
+    end
 end
 
 function Transparency.changeState()
-
-	Transparency.state = not Transparency.state
+    Transparency.state = not Transparency.state
 end
 
 -- change transparency to opaque after user changes color scheme
 function Transparency.changeToOpaqueAfterColorChange()
-
-	if Transparency.state then
-		Transparency.state = false
-	end
+    if Transparency.state then
+        Transparency.state = false
+    end
 end
 
 function Transparency.toggle()
 
-	Transparency.changeState()
+    Transparency.changeState()
 
-	if Transparency.state then
-		Transparency.UnColorMyBackground()
-	else 
-		Transparency.ColorMyBackground()
-	end
+    if Transparency.state then
+	    Transparency.UnColorMyBackground()
+    else
+	    Transparency.ColorMyBackground()
+    end
 end
 
 function Transparency.applyOnSplits()
-
-	if Transparency.state then
-		Transparency.UnColorMyBackground()
-	end
+    if Transparency.state then
+        Transparency.UnColorMyBackground()
+    end
 end
-
 
 return Transparency

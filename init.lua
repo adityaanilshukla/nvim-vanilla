@@ -37,7 +37,6 @@ runtime after/plugin/harpoon.lua
 runtime after/plugin/undotree.lua
 ]]
 
-
 Transparency.applyOnSplits()
 
 -- start lualine
@@ -55,22 +54,3 @@ require('text-to-colorscheme').setup {
   },
 }
 
--- vim.cmd([[colorscheme text-to-colorscheme]])
---
---
--- -- -- Create an autocommand group to listen for ColorScheme events
--- vim.api.nvim_create_augroup("ColorSchemeChanged", { clear = true })
---
--- -- change the transparency to opaque after the colorscheme has changed
--- vim.api.nvim_create_augroup("ColorSchemeChanged", { clear = true })
--- vim.api.nvim_create_autocmd("ColorScheme", {
---     group = "ColorSchemeChanged",
---     pattern = "*",
---     callback = function()
---         -- Only change the transparency state if the color scheme change
---         -- is not triggered by Transparency functions
---         if not Transparency.internalChange then
---             Transparency.changeToOpaqueAfterColorChange()
---         end
---     end,
--- })
