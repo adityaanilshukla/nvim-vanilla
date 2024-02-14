@@ -22,18 +22,18 @@ end, { desc = "Toggle Explorer Focus" })
 local function vertical_split_and_color()
     vim.cmd("vsplit")
     vim.cmd("wincmd w")
-    Transparency.apply()
+    Transparency.applyOnSplits()
 end
 
 -- Function to create horizontal split and then apply color settings
 local function horizontal_split_and_color()
     vim.cmd("split")
     vim.cmd("wincmd w")
-    Transparency.apply()
+    Transparency.applyOnSplits()
 end
 
 local function toggleTransparency()
-    Transparency.changeState()
+    Transparency.toggle()
 end
 
 vim.keymap.set('n', '<leader>tc', toggleTransparency , {desc = "Toggle Transparency"})
@@ -99,19 +99,21 @@ vim.api.nvim_set_keymap('t', '<F7>', '<C-\\><C-n><cmd>ToggleTerm direction=float
 -- Toggle a terminal in floating window mode using 7
 vim.api.nvim_set_keymap('n', '7', '<cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true, desc = "Toggle floating terminal with 7" })
 vim.api.nvim_set_keymap('t', '7', '<C-\\><C-n><cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true, desc = "Toggle floating terminal with 7" })
+--
 -- Importing the ToggleTerm module
 local Terminal = require('toggleterm.terminal').Terminal
 
 -- Create a new Terminal instance for lazygit
 local lazygit = Terminal:new({
-  cmd = "lazygit",
-  hidden = true,
-  direction = "float"
+    cmd = "lazygit",  -- Add this line
+    hidden = true,
+    direction = "float"
 })
+
 
 -- Function to toggle the lazygit terminal
 function _lazygit_toggle()
-  lazygit:toggle()
+    lazygit:toggle()
 end
 
 -- Set the keymap for <leader>gg to open lazygit

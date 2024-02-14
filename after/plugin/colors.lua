@@ -26,6 +26,19 @@ end
 function Transparency.changeState()
 
 	Transparency.state = not Transparency.state
+end
+
+-- change transparency to opaque after user changes color scheme
+function Transparency.changeToOpaqueAfterColorChange()
+
+	if Transparency.state then
+		Transparency.state = false
+	end
+end
+
+function Transparency.toggle()
+
+	Transparency.changeState()
 
 	if Transparency.state then
 		Transparency.UnColorMyBackground()
@@ -34,7 +47,7 @@ function Transparency.changeState()
 	end
 end
 
-function Transparency.apply()
+function Transparency.applyOnSplits()
 
 	if Transparency.state then
 		Transparency.UnColorMyBackground()

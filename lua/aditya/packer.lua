@@ -77,15 +77,47 @@ return require('packer').startup(function(use)
  -- These optional plugins should be loaded directly because of a bug in Packer lazy loading
  use 'romgrk/barbar.nvim'
 
+-- banner and startup screen plugin
 use {
     'goolord/alpha-nvim',
-    requires = { 'nvim-tree/nvim-web-devicons' },
     config = function ()
-        require'alpha'.setup(require'alpha.themes.startify'.config)
+        local dashboard = require'alpha.themes.dashboard'
+
+        -- Cool ASCII Art
+        dashboard.section.header.val = {
+		[[                                                                       ]],
+		[[                                                                       ]],
+		[[                                                                       ]],
+		[[                                                                       ]],
+		[[                                                                       ]],
+		[[                                                                       ]],
+		[[                                                                       ]],
+		[[                                                                     ]],
+		[[       ████ ██████           █████      ██                     ]],
+		[[      ███████████             █████                             ]],
+		[[      █████████ ███████████████████ ███   ███████████   ]],
+		[[     █████████  ███    █████████████ █████ ██████████████   ]],
+		[[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+		[[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+		[[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+		[[                                                                       ]],
+		[[                                                                       ]],
+		[[                                                                       ]],
+        }
+        require'alpha'.setup(require'alpha.themes.dashboard'.config)
     end
 }
 
 -- AI generated colorschemes plugin
 use { "svermeulen/text-to-colorscheme.nvim" }
+
+-- session manager
+-- use { 'Shatur/neovim-session-manager' }
+
+-- gruvbox material colorscheme
+use { 'sainnhe/gruvbox-material' }
+
+
+
 
 end)
