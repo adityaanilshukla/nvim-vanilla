@@ -112,7 +112,7 @@ use {
 use { "svermeulen/text-to-colorscheme.nvim" }
 
 -- -- session manager
-use { 'Shatur/neovim-session-manager' }
+-- use { 'Shatur/neovim-session-manager' }
 
 -- gruvbox material colorscheme
 use { 'sainnhe/gruvbox-material' }

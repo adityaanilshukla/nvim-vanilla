@@ -47,6 +47,9 @@ require('gitsigns').setup()
 
 vim.o.background = "dark"
 
+-- set the colorscheme
+vim.cmd("colorscheme rose-pine")
+
 require('text-to-colorscheme').setup {
   ai = {
     openai_api_key = api_keys.open_ai,

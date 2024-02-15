@@ -91,15 +91,14 @@ vim.api.nvim_set_keymap('n', '<leader>/', '<cmd>lua require("Comment.api").toggl
 -- Toggle comment for selection in visual mode
 vim.api.nvim_set_keymap('v', '<leader>/', '<esc><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', { noremap = true, silent = true, desc = "Toggle comment for selection" })
 
-
 -- Toggle a terminal in floating window mode using F7
-vim.api.nvim_set_keymap('n', '<F7>', '<cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true, desc = "Toggle floating terminal with F7" })
-vim.api.nvim_set_keymap('t', '<F7>', '<C-\\><C-n><cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true, desc = "Toggle floating terminal with F7" })
+vim.api.nvim_set_keymap('n', '<F7>', '<cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<F7>', '<C-\\><C-n><cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true })
 
 -- Toggle a terminal in floating window mode using 7
-vim.api.nvim_set_keymap('n', '7', '<cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true, desc = "Toggle floating terminal with 7" })
-vim.api.nvim_set_keymap('t', '7', '<C-\\><C-n><cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true, desc = "Toggle floating terminal with 7" })
---
+vim.api.nvim_set_keymap('n', '7', '<cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '7', '<C-\\><C-n><cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true })
+
 -- Importing the ToggleTerm module
 local Terminal = require('toggleterm.terminal').Terminal
 
@@ -121,3 +120,6 @@ vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", {no
 
 -- Set 'q' in terminal mode to close the floating terminal when lazygit is running
 vim.api.nvim_set_keymap("t", "q", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+
+-- remap <C-BS> to <C-W> in insert and normal mode
+vim.api.nvim_set_keymap('i', '<C-H>', '<C-W>', {noremap = true})

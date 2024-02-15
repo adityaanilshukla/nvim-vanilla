@@ -1,9 +1,13 @@
 local Transparency = {}
 
-Transparency.state = false
+Transparency.state = true
 Transparency.backgroundColor = 0
 
 function Transparency.ColorMyBackground()
+
+    color = color or "rose-pine"
+    vim.cmd("colorscheme " .. color)
+
     -- Define the highlight groups to change
     local hl_groups = { "Normal", "NormalFloat", "NormalNC" }
 

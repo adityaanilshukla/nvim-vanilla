@@ -9,4 +9,3 @@ vim.keymap.set("n", "<S-h>", function() ui.nav_file(1) end)
 vim.keymap.set("n", "<S-j>", function() ui.nav_file(2) end)
 vim.keymap.set("n", "<S-k>", function() ui.nav_file(3) end)
 vim.keymap.set("n", "<S-i>", function() ui.nav_file(4) end)
-
