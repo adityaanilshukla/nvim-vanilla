@@ -10,9 +10,6 @@ vim.o.laststatus = 3
 -- remove ~ at the end of each buffer
 vim.opt.fillchars = { eob = " " }
 
--- create your own file with your api_keys
-local api_keys = require('api_keys')
-
 -- Require the main configuration file from the 'aditya' module
 require('aditya')
 
@@ -52,7 +49,7 @@ vim.cmd("colorscheme rose-pine")
 
 require('text-to-colorscheme').setup {
   ai = {
-    openai_api_key = api_keys.open_ai,
+     openai_api_key = os.getenv("OPENAI_API_KEY"),
      gpt_model = "gpt-3.5-turbo-0613",
   },
 }
