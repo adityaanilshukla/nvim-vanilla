@@ -1,42 +1,4 @@
--- Function to check if a command is executable
-local function is_executable(command)
-    return vim.fn.executable(command) == 1
-end
-
 vim.g.mapleader = " "
-
-local Transparency = require('after/plugin/colors')
-
--- NeoTree remap
-vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "Toggle Explorer" })
-vim.keymap.set("n", "<leader>o", function()
-    if vim.bo.filetype == "neo-tree" then
-        vim.cmd("wincmd p")
-    else
-        vim.cmd("Neotree focus")
-    end
-end, { desc = "Toggle Explorer Focus" })
-
-
--- Function to create vertical split and then apply color settings
-local function vertical_split_and_color()
-    vim.cmd("vsplit")
-    vim.cmd("wincmd w")
-    Transparency.applyOnSplits()
-end
-
--- Function to create horizontal split and then apply color settings
-local function horizontal_split_and_color()
-    vim.cmd("split")
-    vim.cmd("wincmd w")
-    Transparency.applyOnSplits()
-end
-
-local function toggleTransparency()
-    Transparency.toggle()
-end
-
-vim.keymap.set('n', '<leader>tc', toggleTransparency , {desc = "Toggle Transparency"})
 
 -- Normal --
 -- Standard Operations
@@ -49,8 +11,9 @@ vim.keymap.set('n', '<leader>n', "<cmd>enew<cr>", {desc = "New File"})
 vim.keymap.set('n', '<C-s>', "<cmd>w!<cr>", {desc = "Force write"})
 vim.keymap.set('n', '<C-q>', "<cmd>qa!<cr>", {desc = "Force quit"})
 -- Set keymaps for vertical and horizontal splits
-vim.keymap.set('n', '|', vertical_split_and_color, {desc = "Vertical Split"})
-vim.keymap.set('n', '\\', horizontal_split_and_color, {desc = "Horizontal Split"})
+vim.keymap.set('n', '|', '<cmd>vsplit<CR><C-w>w', {desc = "Vertical Split"})
+vim.keymap.set('n', '\\', '<cmd>split<CR><C-w>w', {desc = "Horizontal Split"})
+
 
 
 -- Close buffer
@@ -84,42 +47,11 @@ vim.api.nvim_set_keymap('n', '<C-Down>', '<cmd>lua require("smart-splits").resiz
 vim.api.nvim_set_keymap('n', '<C-Left>', '<cmd>lua require("smart-splits").resize_left()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-Right>', '<cmd>lua require("smart-splits").resize_right()<CR>', { noremap = true, silent = true })
 
-
 -- Toggle comment line in normal mode
 vim.api.nvim_set_keymap('n', '<leader>/', '<cmd>lua require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1)<CR>', { noremap = true, silent = true, desc = "Toggle comment line" })
 
 -- Toggle comment for selection in visual mode
 vim.api.nvim_set_keymap('v', '<leader>/', '<esc><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', { noremap = true, silent = true, desc = "Toggle comment for selection" })
-
--- Toggle a terminal in floating window mode using F7
-vim.api.nvim_set_keymap('n', '<F7>', '<cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('t', '<F7>', '<C-\\><C-n><cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true })
-
--- Toggle a terminal in floating window mode using 7
-vim.api.nvim_set_keymap('n', '7', '<cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('t', '7', '<C-\\><C-n><cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true })
-
--- Importing the ToggleTerm module
-local Terminal = require('toggleterm.terminal').Terminal
-
--- Create a new Terminal instance for lazygit
-local lazygit = Terminal:new({
-    cmd = "lazygit",  -- Add this line
-    hidden = true,
-    direction = "float"
-})
-
-
--- Function to toggle the lazygit terminal
-function _lazygit_toggle()
-    lazygit:toggle()
-end
-
--- Set the keymap for <leader>gg to open lazygit
-vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
-
--- Set 'q' in terminal mode to close the floating terminal when lazygit is running
-vim.api.nvim_set_keymap("t", "q", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
 
 -- remap <C-BS> to <C-W> in insert and normal mode
 vim.api.nvim_set_keymap('i', '<C-H>', '<C-W>', {noremap = true})

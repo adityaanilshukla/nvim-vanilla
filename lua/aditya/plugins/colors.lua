@@ -4,7 +4,6 @@ Transparency.state = true
 Transparency.backgroundColor = 0
 
 function Transparency.ColorMyBackground()
-
     color = color or "rose-pine"
     vim.cmd("colorscheme " .. color)
 
@@ -56,13 +55,12 @@ function Transparency.changeToOpaqueAfterColorChange()
 end
 
 function Transparency.toggle()
-
     Transparency.changeState()
 
     if Transparency.state then
-	    Transparency.UnColorMyBackground()
+        Transparency.UnColorMyBackground()
     else
-	    Transparency.ColorMyBackground()
+        Transparency.ColorMyBackground()
     end
 end
 
