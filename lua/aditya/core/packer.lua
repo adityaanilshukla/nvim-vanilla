@@ -117,4 +117,7 @@ use { 'sainnhe/gruvbox-material' }
 -- session manger plugin
 use { 'Shatur/neovim-session-manager' }
 
+-- plugin to make nvim ui telescope
+use {'nvim-telescope/telescope-ui-select.nvim' }
+
 end)

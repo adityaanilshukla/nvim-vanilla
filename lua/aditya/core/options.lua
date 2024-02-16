@@ -39,7 +39,7 @@ hex_palettes = {
       },
    },
 },
-  default_palette = "red baron",
+default_palette = "red baron",
 }
 
 -- make nvim not lauch last session on start
@@ -57,4 +57,14 @@ vim.api.nvim_create_autocmd("VimEnter", {
     end,
 })
 
-
+require("telescope").setup {
+  extensions = {
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {
+        -- even more opts
+      }
+    }
+  }
+}
+-- load_extension, somewhere after setup function:
+require("telescope").load_extension("ui-select")
