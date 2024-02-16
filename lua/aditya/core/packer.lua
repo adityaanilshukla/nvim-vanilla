@@ -117,5 +117,7 @@ use { 'lukas-reineke/indent-blankline.nvim', branch = 'master'}
 -- tokyonight colorscheme
 use{ 'folke/tokyonight.nvim' }
 
+-- catpucchin colorscheme 
+use { "catppuccin/nvim", as = "catppuccin" }
 end)
 
