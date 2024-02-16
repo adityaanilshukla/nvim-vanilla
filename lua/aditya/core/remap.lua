@@ -14,8 +14,6 @@ vim.keymap.set('n', '<C-q>', "<cmd>qa!<cr>", {desc = "Force quit"})
 vim.keymap.set('n', '|', '<cmd>vsplit<CR><C-w>w', {desc = "Vertical Split"})
 vim.keymap.set('n', '\\', '<cmd>split<CR><C-w>w', {desc = "Horizontal Split"})
 
-
-
 -- Close buffer
 vim.api.nvim_set_keymap('n', '<leader>c', '<cmd>bdelete<CR>', { noremap = true, silent = true, desc = 'Close buffer' })
 -- Force close buffer
@@ -55,3 +53,18 @@ vim.api.nvim_set_keymap('v', '<leader>/', '<esc><cmd>lua require("Comment.api").
 
 -- remap <C-BS> to <C-W> in insert and normal mode
 vim.api.nvim_set_keymap('i', '<C-H>', '<C-W>', {noremap = true})
+
+-- Keybindings for Packer with descriptions
+local set = vim.keymap.set
+
+-- Packer Status
+set('n', '<leader>ps', '<cmd>PackerStatus<CR>', { desc = "Plugins Status" })
+
+-- Packer Sync (Install, Update, Clean)
+set('n', '<leader>pS', '<cmd>PackerSync<CR>', { desc = "Plugins Sync" })
+
+-- Packer Check for Updates (simply using PackerStatus for checking)
+set('n', '<leader>pu', '<cmd>PackerStatus<CR>', { desc = "Plugins Check Updates" })
+
+-- Packer Update Plugins
+set('n', '<leader>pU', '<cmd>PackerUpdate<CR>', { desc = "Plugins Update" })
