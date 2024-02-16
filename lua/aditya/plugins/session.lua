@@ -9,7 +9,7 @@ if is_session_manager_available then
     vim.api.nvim_set_keymap('n', '<leader>ls', '<cmd>lua require("session_manager").load_last_session()<CR>', { noremap = true, silent = true, desc = "Load last session" })
 
     -- Save the current session
-    vim.api.nvim_set_keymap('n', '<leader>ss', '<cmd>lua require("session_manager").save_current_session()<CR>', { noremap = true, silent = true, desc = "Save this session" })
+vim.api.nvim_set_keymap('n', '<leader>Ss', '<cmd>lua require("session_manager").save_current_session(); vim.cmd("echo \\"session saved\\"")<CR>', { noremap = true, silent = true })
 
     -- Delete a session
     vim.api.nvim_set_keymap('n', '<leader>ds', '<cmd>lua require("session_manager").delete_session()<CR>', { noremap = true, silent = true, desc = "Delete session" })

@@ -17,31 +17,6 @@ require('gitsigns').setup()
 
 vim.o.background = "dark"
 
--- text to colorscheme defualt generation
-require('text-to-colorscheme').setup {
-  ai = {
-    openai_api_key = "OPENAPI_API_KEY",
-  },
-hex_palettes = {
-   {
-      name = "red baron",
-      background_mode = "dark",
-      background = "#1c1c1c",
-      foreground = "#f7f7f7",
-      accents = {
-         "#ff0000",
-         "#ff4d00",
-         "#ff9900",
-         "#ffcc00",
-         "#ffea00",
-         "#ffff00",
-         "#97d900",
-      },
-   },
-},
-default_palette = "red baron",
-}
-
 -- make nvim not lauch last session on start
 local Path = require('plenary.path')
 local config = require('session_manager.config')
@@ -68,3 +43,4 @@ require("telescope").setup {
 }
 -- load_extension, somewhere after setup function:
 require("telescope").load_extension("ui-select")
+

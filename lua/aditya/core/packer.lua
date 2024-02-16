@@ -11,15 +11,6 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  use({
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
-	  config = function()
-		  vim.cmd('colorscheme rose-pine')
-  	end
-  })
-
-
   use( 'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'} )
   use( 'nvim-treesitter/playground' )
   use( 'theprimeagen/harpoon' )
@@ -120,4 +111,11 @@ use { 'Shatur/neovim-session-manager' }
 -- plugin to make nvim ui telescope
 use {'nvim-telescope/telescope-ui-select.nvim' }
 
+-- vertical line indentation plugin
+use { 'lukas-reineke/indent-blankline.nvim', branch = 'master'}
+
+-- tokyonight colorscheme
+use{ 'folke/tokyonight.nvim' }
+
 end)
+
