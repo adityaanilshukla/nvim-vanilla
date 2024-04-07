@@ -27,7 +27,6 @@ return require('packer').startup(function(use)
       -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     }
   }
-
   -- smart splitting between windows
   use('mrjones2014/smart-splits.nvim')
 
@@ -120,6 +119,14 @@ return require('packer').startup(function(use)
   -- catpucchin colorscheme
   use { "catppuccin/nvim", as = "catppuccin" }
 
+  -- mason lsp plugin
+  use {
+
+	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
+	"neovim/nvim-lspconfig",
+  }
+
   -- which key plugin to show keybindings
   use {
 	  "folke/which-key.nvim",
@@ -130,8 +137,5 @@ return require('packer').startup(function(use)
 		  }
 	  end
   }
-
-  -- coc plugin
-  use { 'neoclide/coc.nvim', branch = 'release' }
 
 end)

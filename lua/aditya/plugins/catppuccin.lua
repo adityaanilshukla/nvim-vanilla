@@ -47,3 +47,7 @@ require("catppuccin").setup({
 
 -- set the colorscheme to catppuccin
 vim.cmd("colorscheme catppuccin-mocha")
+
+
+
+

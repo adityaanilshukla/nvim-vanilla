@@ -38,8 +38,42 @@ hex_palettes = {
          "#f7fbfd",
       },
    },
-},
+
+
+   {
+      name = "Roscosmos",
+      background_mode = "dark",
+      background = "#0d0d0d",
+      foreground = "#ffffff",
+      accents = {
+         "#ff0000",
+         "#007fff",
+         "#ff8c00",
+         "#ffd700",
+         "#00d900",
+         "#4b0082",
+         "#9400d3",
+      },
+   },
+
+
+   {
+      name = "Only Murders In the Building",
+      background_mode = "dark",
+      background = "#1a1a1a",
+      foreground = "#ffffff",
+      accents = {
+         "#ff0000",
+         "#ff9900",
+         "#ffff00",
+         "#00d900",
+         "#00ffff",
+         "#0000ff",
+         "#ff00ff",
+      },
+   },
 
 default_palette = "red baron",
 
+	}
 }
