@@ -25,12 +25,12 @@ require('session_manager').setup({
 })
 
 -- Then, set up an autocommand to open Alpha when Neovim starts
-vim.api.nvim_create_autocmd("VimEnter", {
-    pattern = "*",
-    callback = function()
-        require("alpha").start()
-    end,
-})
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--     pattern = "*",
+--     callback = function()
+--         require("alpha").start()
+--     end,
+-- })
 
 require("telescope").setup {
   extensions = {

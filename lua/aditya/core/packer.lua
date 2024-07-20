@@ -4,6 +4,17 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  -- Mason plugin for LSP, DAP, and more
+  use {
+    'williamboman/mason.nvim',
+    run = ":MasonUpdate" -- Optional but recommended to ensure you're always up-to-date
+  }
+
+  -- Mason LSPConfig to bridge mason and nvim-lspconfig
+  use 'williamboman/mason-lspconfig.nvim'
+
+  -- Nvim LSPConfig
+  use 'neovim/nvim-lspconfig'
 
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.5',
