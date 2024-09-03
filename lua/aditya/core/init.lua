@@ -4,6 +4,5 @@ require('aditya.core.packer')
 require('aditya.core.remap')
 -- load my options
 require('aditya.core.options')
--- copying to system clipboard
-require('aditya.core.clipboard')
-
+-- Set clipboard option for Windows
+vim.opt.clipboard = 'unnamedplus'
