@@ -1,7 +1,7 @@
 require('text-to-colorscheme').setup {
   ai = {
      openai_api_key = os.getenv("OPENAI_API_KEY"),
-     gpt_model = "gpt-3.5-turbo-0613",
+     gpt_model = "gpt-4",
   },
 
 hex_palettes = {
@@ -24,7 +24,7 @@ hex_palettes = {
 
 
    {
-      name = "Royal Marine Bloo",
+      name = "Royal Marine Blue",
       background_mode = "dark",
       background = "#0c1a24",
       foreground = "#c2d1d9",
