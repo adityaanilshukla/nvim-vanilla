@@ -26,6 +26,11 @@ return require('packer').startup(function(use)
   use {'lervag/vimtex',ft = {'tex'},}
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
   use('nvim-treesitter/playground')
+use({
+  "nvim-treesitter/nvim-treesitter-textobjects",
+  after = "nvim-treesitter",
+  requires = "nvim-treesitter/nvim-treesitter",
+})
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
@@ -146,5 +151,18 @@ return require('packer').startup(function(use)
 
   -- coc plugin
   use { 'neoclide/coc.nvim', branch = 'release' }
+
+	use({
+	  "iamcco/markdown-preview.nvim",
+	  run = function() vim.fn["mkdp#util#install"]() end,
+	})
+
+	use({
+	  "preservim/vim-markdown",
+	})
+
+	use({
+	  "godlygeek/tabular",
+	})
 
 end)

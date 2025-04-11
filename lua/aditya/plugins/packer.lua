@@ -138,4 +138,20 @@ return require('packer').startup(function(use)
 	  end
   }
 
+	use({
+	  "iamcco/markdown-preview.nvim",
+	  run = function() vim.fn["mkdp#util#install"]() end,
+	  ft = { "markdown" },
+	})
+
+	use({
+	  "preservim/vim-markdown",
+	  ft = { "markdown" },
+	})
+
+	use({
+	  "godlygeek/tabular",
+	  ft = { "markdown" },
+	})
+
 end)
