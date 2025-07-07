@@ -43,7 +43,6 @@ return require('packer').startup(function(use)
     require("toggleterm").setup()
   end }
 
-
   -- nvim v0.7.2
   use({
     "kdheepak/lazygit.nvim",
@@ -127,6 +126,16 @@ return require('packer').startup(function(use)
 	"neovim/nvim-lspconfig",
   }
 
+	use({
+	    "kylechui/nvim-surround",
+	    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+	    config = function()
+		require("nvim-surround").setup({
+		    -- Configuration here, or leave empty to use defaults
+		})
+	    end
+	})
+	--
   -- which key plugin to show keybindings
   use {
 	  "folke/which-key.nvim",
