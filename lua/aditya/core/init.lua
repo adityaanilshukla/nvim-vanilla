@@ -6,4 +6,3 @@ require('aditya.core.remap')
 require('aditya.core.options')
 -- copying to system clipboard
 require('aditya.core.clipboard')
-

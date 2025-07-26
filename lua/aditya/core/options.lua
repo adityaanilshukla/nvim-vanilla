@@ -5,6 +5,9 @@ vim.o.laststatus = 3
 -- remove ~ at the end of each buffer
 vim.opt.fillchars = { eob = " " }
 
+
+vim.opt.termguicolors = true
+--
 -- set relative line numbers
 vim.wo.number = true
 vim.wo.relativenumber = true

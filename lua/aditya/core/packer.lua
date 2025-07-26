@@ -22,10 +22,6 @@ return require('packer').startup(function(use)
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
-  -- Vimtex for LaTeX support
-  use {'lervag/vimtex',ft = {'tex'},}
-  use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-  use('nvim-treesitter/playground')
 use({
   "nvim-treesitter/nvim-treesitter-textobjects",
   after = "nvim-treesitter",
